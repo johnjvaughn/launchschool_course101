@@ -1,0 +1,46 @@
+1. a method that returns the sum of two integers
+#casual
+get 2 numbers in method's arguments or from user
+add them and save in a variable
+return or print the result
+#formal
+START
+#given 2 integers called "number1" and "number2"
+SET result = number1 + number2
+PRINT or RETURN result
+END
+
+2. a method that takes an array of strings, and returns a string that is all those strings concatenated together
+(assuming not using join method)
+#casual
+iterate through the array of strings, and concatenate each one to a saved big string
+return the big string
+#formal
+START
+#given array of strings called "strings"
+SET iterator = 1
+SET bigstring = new empty string
+WHILE iterator < length of strings array
+  SET current_string = value within strings at space "iterator"
+  concatenate a copy of current_string onto end of bigstring
+  iterator = iterator + 1
+return bigstring
+END
+
+3. a method that takes an array of integers, and returns a new array with every other element
+#casual
+iterate through the array of integers
+every other integer is pushed on to a new array  of integers
+the other integers are simply skipped
+#formal
+START
+#given array of integers called "numbers"
+SET iterator = 1
+SET newnumbers = new empty array
+WHILE iterator < length of numbers array
+  SET current_num = value within numbers at space "iterator"
+  IF iterator is even
+    add current_num to end of newnumbers array
+  iterator = iterator + 1
+return newnumbers
+END
