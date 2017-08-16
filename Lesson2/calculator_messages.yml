@@ -1,0 +1,27 @@
+en:
+  app_name: "Calculator 0.01"
+  welcome: "Welcome to Calculator 0.01! Enter your name:"
+  hello: "Hi,"
+  valid_name: "Please use a valid name."
+  enter_number: "Enter a number:"
+  enter_2nd_number: "Enter another number:"
+  valid_number: "That is not a valid number."
+
+  enter_operator: "Perform which operation?\n
+      + to add\n
+      - to subtract\n
+      * to multiply\n
+      / to divide.\n"
+  valid_operator: "That is not a valid operator. Please enter +, -, *, or /."
+  adding: "Adding"
+  subtracting: "Subtracting"
+  multiplying: "Multiplying"
+  dividing: "Dividing"
+
+  two_numbers: "the two numbers"
+  do_another: "Do you want to do another calculation? (y/n)"
+  thanks: "Thanks for using"
+  answer: "Answer:"
+
+  error_div_zero: "Error, cannot divide by zero."
+  error_unknown: "Error, unknown operation."
