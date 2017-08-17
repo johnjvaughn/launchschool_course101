@@ -5,12 +5,13 @@ def prompt(message)
 end
 
 def display_results(user_choice, computer_choice)
-  prompt("You chose #{user_choice}; computer chose #{computer_choice}")
+  prompt "You chose #{user_choice}; computer chose #{computer_choice}"
   user_choice_index = VALID_CHOICES.index(user_choice)
   computer_choice_index = VALID_CHOICES.index(computer_choice)
-  if (user_choice_index - computer_choice_index) % 3 == 1
+  # use mod 3 arithmatic on these indexes to find the winner
+  if (user_choice_index - computer_choice_index) % VALID_CHOICES.size == 1
     prompt "You win!"
-  elsif (computer_choice_index - user_choice_index) % 3 == 1
+  elsif (computer_choice_index - user_choice_index) % VALID_CHOICES.size == 1
     prompt "The computer won."
   else
     prompt "It's a tie."
@@ -19,7 +20,7 @@ def display_results(user_choice, computer_choice)
 end
 
 loop do
-  prompt("Choose one: " + VALID_CHOICES.join(', ') + " (or type q to quit).")
+  prompt "Choose one: " + VALID_CHOICES.join(', ') + " (or type q to quit)."
   user_choice = gets.chomp
   if VALID_CHOICES.include?(user_choice)
     computer_choice = VALID_CHOICES.sample
