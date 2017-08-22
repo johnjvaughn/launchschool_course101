@@ -101,7 +101,7 @@ end
 
 def computer_places_piece!(board)
   # try to get a square through one of the strategic methods
-  # next, choose square 5 if available
+  # if no strategic square found, choose square 5 if available
   # otherwise, choose randomly
   open_squares = empty_squares(board)
   square_to_play = computer_find_winning_square(board)
