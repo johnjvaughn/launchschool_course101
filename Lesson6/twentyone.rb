@@ -65,6 +65,7 @@ def busted?(total)
 end
 
 def decide_winner_and_display(player_total, dealer_total)
+  # this generates a rubocop warning about too many lines
   puts "==============================="
   if busted?(player_total)
     prompt "Dealer wins due to Player BUST!"
@@ -95,7 +96,7 @@ def display_match_score(score)
   prompt ""
 end
 
-def check_if_match_over(score)
+def check_for_a_match_winner(score)
   score.each do |competitor, num_wins|
     if num_wins >= GAMES_TO_WIN_MATCH
       return competitor.capitalize
@@ -146,7 +147,8 @@ loop do
   puts
   show_hand(dealer_hand, :dealer, dealer_total)
 
-  unless winner # no need for dealer to hit if player has already busted
+  unless winner
+    # no need for dealer to hit if player has already busted
     loop do
       if dealer_total >= DEALER_STAYS_AT
         if dealer_total == BUST_IF_OVER
@@ -174,7 +176,7 @@ loop do
 
   match_score[winner] += 1 if winner
   display_match_score(match_score)
-  match_winner = check_if_match_over(match_score)
+  match_winner = check_for_a_match_winner(match_score)
   if match_winner
     display_match_results(match_winner)
     match_score = initialize_score
