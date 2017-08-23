@@ -11,6 +11,10 @@ def prompt(message)
   puts "=> #{message}"
 end
 
+def clear_screen
+  system('clear') or system('cls')
+end
+
 def total(cards)
   ranks = cards.map { |card| card[1] }
 
@@ -32,6 +36,7 @@ def total(cards)
 end
 
 def initialize_deck
+  prompt "Shuffling..."
   SUITS.product(RANKS).shuffle
 end
 
@@ -40,6 +45,7 @@ def initialize_score
 end
 
 def deal_new_hand!(deck, player_cards, dealer_cards)
+  prompt "Dealing..."
   2.times do
     player_cards << deck.pop
     dealer_cards << deck.pop
@@ -71,7 +77,7 @@ def decide_winner_and_display(player_total, dealer_total)
     prompt "Dealer wins due to Player BUST!"
     winner = :dealer
   elsif busted?(dealer_total)
-    prompt "Dealer wins due to Dealer BUST!"
+    prompt "Player wins due to Dealer BUST!"
     winner = :player
   elsif player_total > dealer_total
     prompt "Player wins, #{player_total} to #{dealer_total}!"
@@ -113,7 +119,8 @@ def display_match_results(winner)
 end
 
 # main program
-prompt "Welcome to Twentyone!"
+clear_screen
+prompt "Welcome to Twenty-One!"
 puts
 match_score = initialize_score
 
@@ -123,6 +130,7 @@ loop do
   dealer_hand = []
 
   deal_new_hand!(deck, player_hand, dealer_hand)
+  puts
   dealer_total = total(dealer_hand)
   show_hand(dealer_hand, :dealer)
   puts
@@ -133,7 +141,12 @@ loop do
   loop do
     break if player_total == BUST_IF_OVER
     prompt "(H)IT or (S)TAY?"
-    break if ['s', 'stay'].include?(gets.chomp.downcase)
+    answer = gets.downcase
+    if answer.start_with?('s')
+      break
+    elsif !answer.start_with?('h')
+      next
+    end
     deal_another_card!(deck, player_hand)
     player_total = total(player_hand)
     show_hand(player_hand, :player, player_total)
@@ -185,6 +198,8 @@ loop do
     prompt "Play again? ([y]/n)"
   end
   break if gets.downcase.start_with?('n')
+  clear_screen
 end
 
-prompt "Thanks for playing Twentyone. Goodbye!"
+clear_screen
+prompt "Thanks for playing Twenty-One. Goodbye!"
